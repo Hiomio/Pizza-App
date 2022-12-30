@@ -1,4 +1,7 @@
 @import './variables';
+@import "~noty/src/noty.scss";
+@import "~noty/src/themes/mint.scss";
+
 
 body {
     font-family: 'Lato', sans-serif;
@@ -42,4 +45,78 @@ section.hero {
         border-color: $pure ;
         color: $pure;
     }
+    &:focus{
+        outline: none;
+    }
+}
+
+
+.btn-primary {
+    background: $primary;
+    transition: $smooth;
+
+    &:hover {
+        background: $primary-hover;
+    }
+}
+
+section.cart {
+    background: $secondary;
+
+    .amount {
+        color: $primary;
+    }
+}
+
+section.login {
+    background: $secondary;
+    min-height: calc(100vh - 86px);
+
+    .icon {
+        background: $primary;
+        transition: $smooth;
+
+        &:hover {
+            background: $primary-hover;
+        }
+
+        &:focus {
+            border-color: $primary;
+        }
+
+    }
+
+
+    a {
+        color: $primary;
+        transition: $smooth;
+
+        &:hover {
+            color: $primary-hover;
+        }
+    }
+
+    input {
+        transition: $smooth;
+
+        &:focus {
+            border-color: $primary;
+        }
+
+        &:checked {
+            background: $primary;
+        }
+    }
+}
+
+
+// for noty
+.noty_theme__mint {
+    // background: $primary-hover !important;
+    font-family: 'Lato', sans-serif !important;
+    color: $pure;
+    border-radius: 50px !important;
+    padding-left: 15px !important;
+    font-weight: bold;
+    // transition: all 0.1 ease-in-out !important;
 }
