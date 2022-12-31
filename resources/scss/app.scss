@@ -45,7 +45,8 @@ section.hero {
         border-color: $pure ;
         color: $pure;
     }
-    &:focus{
+
+    &:focus {
         outline: none;
     }
 }
@@ -66,6 +67,10 @@ section.cart {
     .amount {
         color: $primary;
     }
+}
+
+section.register {
+    min-height: 100vh !important;
 }
 
 section.login {

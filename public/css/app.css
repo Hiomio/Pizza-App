@@ -296,6 +296,10 @@ section.cart .amount {
   color: #FE5F1E;
 }
 
+section.register {
+  min-height: 100vh !important;
+}
+
 section.login {
   background: #F8F8F8;
   min-height: calc(100vh - 86px);

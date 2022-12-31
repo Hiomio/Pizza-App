@@ -1,49 +1,78 @@
-<section class="login container flex items-center m-auto">
+<section class="register login container flex items-center m-auto">
 
     <div class="container flex xl:justify-center lg:justify-between justify-center items-center flex-wrap h-full g-6">
-        <div class="xl:ml-20 xl:w-5/12 lg:w-5/12 md:w-8/12 mb-12 md:mb-0 ">
-            <form>
-                
+        <div class="xl:ml-20 xl:w-5/12 lg:w-5/12 md:w-8/12 mb-12 md:mb-0 h-full">
 
-                
-
-                <!-- Name input -->
-                <div class="mb-6">
-                    <label class="block text-gray-700 text-sm font-bold mb-2" for="name">Name</label>
-                    <input type="text"
-                        class="form-control block w-full px-4 py-2 text-xl font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded m-0 focus:text-gray-700 focus:bg-white  focus:outline-none"
-                        id="exampleFormControlInput2"
-                        id="exampleFormControlInput2" placeholder="Enter your name" />
-                </div>
-                <!-- Email input -->
-                <div class="mb-6">
-                    <label class="block text-gray-700 text-sm font-bold mb-2" for="name">Email</label>
-                    <input type="text"
-                        class="form-control block w-full px-4 py-2 text-xl font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded m-0 focus:text-gray-700 focus:bg-white  focus:outline-none"
-                        id="exampleFormControlInput2"
-                        id="exampleFormControlInput2" placeholder="Enter your email " />
-                </div>
-
-                <!-- Password input -->
-                <div class="mb-6">
-                    <label class="block text-gray-700 text-sm font-bold mb-2" for="password">Password</label>
-                    <input type="password"
-                        class="form-control block w-full px-4 py-2 text-xl font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded m-0 focus:text-gray-700 focus:bg-white  focus:outline-none"
-                        id="exampleFormControlInput2" placeholder="Password" />
-                </div>
+            
+            
+            <form action="/register" method="POST">
+                        <%if (messages.error ) { %>
+                            <span class="text-red-500 text-sm">
+                                <%= messages.error %>
+                            </span>
+                            <% } %>
 
 
-                <div class="text-center lg:text-left">
-                    <button
-                        class="inline-block px-7 py-3 btn-primary rounded-full text-white font-bold uppercase shadow-md hover:shadow-lg focus:shadow-lg focus:outline-none focus:ring-0">
-                        Register
-                    </button>
-                    <p class="text-sm font-semibold mt-2 pt-1 mb-0">
-                        Already have an account?
-                        <a href="/login">Login</a>
-                    </p>
-                </div>
-            </form>
+                        <!-- Name input -->
+                        <div class="mb-6">
+                            <label class="block text-gray-700 text-sm font-bold mb-2" for="name">Name</label>
+                            <input type="text" value="<%= messages.name %>"
+                                class="form-control block w-full px-4 py-2 text-xl font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded m-0 focus:text-gray-700 focus:bg-white  focus:outline-none"
+                                id="exampleFormControlInput2" id="exampleFormControlInput2"
+                                placeholder="Enter your fullname" name="name" />
+                        </div>
+
+                        <!-- Email input -->
+                        <div class="mb-6">
+                            <label class="block text-gray-700 text-sm font-bold mb-2" for="name">Email</label>
+                            <input type="text" value="<%= messages.email %>"
+                                class="form-control block w-full px-4 py-2 text-xl font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded m-0 focus:text-gray-700 focus:bg-white  focus:outline-none"
+                                id="exampleFormControlInput2" id="exampleFormControlInput2"
+                                placeholder="Enter your email " name="email" />
+                        </div>
+
+
+                        <!-- phone input -->
+                        <div class="mb-6">
+                            <label class="block text-gray-700 text-sm font-bold mb-2" for="name">Phone</label>
+                            <input type="text" value="<%= messages.phone %>"
+                                class="form-control block w-full px-4 py-2 text-xl font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded m-0 focus:text-gray-700 focus:bg-white  focus:outline-none"
+                                id="exampleFormControlInput2" id="exampleFormControlInput2" placeholder="Phone "
+                                name="phone" />
+                        </div>
+
+                        <!-- Password input -->
+                        <div class="mb-6">
+                            <label class="block text-gray-700 text-sm font-bold mb-2" for="password">Password</label>
+                            <input type="password"
+                                class="form-control block w-full px-4 py-2 text-xl font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded m-0 focus:text-gray-700 focus:bg-white  focus:outline-none"
+                                id="exampleFormControlInput2" placeholder="Password" name="password" />
+                        </div>
+
+
+                        <!-- CPassword input -->
+                        <div class="mb-6">
+                            <label class="block text-gray-700 text-sm font-bold mb-2" for="password">Confirm
+                                password</label>
+                            <input type="password"
+                                class="form-control block w-full px-4 py-2 text-xl font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded m-0 focus:text-gray-700 focus:bg-white  focus:outline-none"
+                                id="exampleFormControlInput2" placeholder="Confirm password" name="confirmPassword" />
+                        </div>
+
+
+                        <div class="text-center lg:text-left">
+                            <button type="submit"
+                                class="inline-block px-7 py-3 btn-primary rounded-full text-white font-bold uppercase shadow-md hover:shadow-lg focus:shadow-lg focus:outline-none focus:ring-0">
+                                Register
+                            </button>
+                            <p class="text-sm font-semibold mt-2 pt-1 mb-0">
+                                Already have an account?
+                                <a href="/login">Login</a>
+                            </p>
+                        </div>
+
+
+                    </form>
         </div>
     </div>
 
