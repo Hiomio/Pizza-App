@@ -338,3 +338,7 @@ section.login input:checked {
   padding-left: 15px !important;
   font-weight: bold;
 }
+
+a.link {
+  color: #FE5F1E;
+}
