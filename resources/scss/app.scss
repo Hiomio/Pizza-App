@@ -53,12 +53,16 @@ section.hero {
 
 
 .btn-primary {
-    background: $primary;
+    color: white !important;
     transition: $smooth;
+    background-color: $primary !important;
 
     &:hover {
-        background: $primary-hover;
+        background: $primary-hover !important;
     }
+}
+section{
+    background: $secondary;
 }
 
 section.cart {
@@ -71,10 +75,17 @@ section.cart {
 
 section.register {
     min-height: 100vh !important;
+   
+}
+.register.container{
+    padding: 0;
+    width: 100%;    
+    background: $secondary;
 }
 
 section.login {
     background: $secondary;
+  
     min-height: calc(100vh - 86px);
 
     .icon {
@@ -247,4 +258,39 @@ section.status {
     float: right;
     font-size: 14px;
     margin-top: 8px;
+}
+
+
+@media (max-width:1060px){
+    .container{
+        max-width: 90%;
+    }
+
+    table{
+        display: block;
+        overflow-x: auto;
+        white-space: nowrap;
+    }
+
+    
+
+}
+
+@media (max-width: 768px){
+    .status-box ul li span::before{
+        font-size: 34px;
+    }
+
+    .auth{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 0 20px 20px;
+    }
+    .auth-login{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 0 20px 20px;
+    }
 }

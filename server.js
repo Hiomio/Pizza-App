@@ -15,7 +15,7 @@ const Emitter = require('events')
 
 // database connection
 mongoose.set('strictQuery', false);
-mongoose.connect("mongodb://localhost/pizza", {
+mongoose.connect(process.env.MONGO_CONNECT_URL, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
 })
