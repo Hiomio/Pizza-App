@@ -2,6 +2,7 @@ import axios from 'axios'
 import Noty from "noty";
 import moment from 'moment';
 import { initAdmin } from './admin';
+import { initStripe } from './stripe';
 
 let addToCart = document.querySelectorAll('.add-to-cart')
 let cartCounter = document.querySelector('#cartCounter')
@@ -58,6 +59,8 @@ let hiddenInput = document.querySelector('#hiddenInput')
 let order = hiddenInput ? hiddenInput.value : null
 order = JSON.parse(order)
 let time = document.createElement('small')
+
+
 function updateStatus(order) {
     statuses.forEach((status) => {
         status.classList.remove('step-completed')
@@ -84,6 +87,10 @@ function updateStatus(order) {
 updateStatus(order);
 
 
+// Stripe 
+initStripe()
+
+
 // Socket
 let socket = io()
 
@@ -94,7 +101,7 @@ if (order) {
 
 // for admin order update 
 let adminAreaPath = window.location.pathname
-if(adminAreaPath.includes('admin') ){
+if (adminAreaPath.includes('admin')) {
     initAdmin(socket)
     socket.emit('join', 'adminRoom')
 }

@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="/img/hero-pizza.png">
     <title>Realtime-pizza-delivery</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -16,40 +17,112 @@
 </head>
 
 <body>
-    <!-- navbar -->
-    <nav class="container mx-auto flex items-center justify-between py-4">
-        <div>
-            <a href="/"> <img src="/img/logo.png" alt="logo"></a>
-        </div>
+    <div class="px-10">
+        <!-- navbar -->
+        <nav class="container mx-auto flex items-center justify-between py-4">
+            <div>
+                <a href="/"> <img src="/img/logo.png" alt="logo"></a>
+            </div>
 
-        <div>
-            <ul class="flex items-center">
-                <li class="ml-6"><a href="/">Menu</a></li>
-                <% if (user) { %>
-                    <form id="logout" action="/logout" method="POST" class="bg-tr"></form>
-                    <li class="ml-6 cursor-pointer"><a onclick="document.getElementById('logout').submit()">Logout</a>
+            <div>
+                <ul class="flex items-center">
+                    <li class="ml-6"><a href="/">Menu</a></li>
+                    <% if (user) { %>
+                        <% if (user.role==='admin' ) { %>
+                            <li class="ml-6"><a href="/admin/orders">Orders received🔑</a></li>
+                            <% }else{ %>
+                                <li class="ml-6"><a href="/customer/orders">Your Orders</a></li>
+                                <% } %>
+                                    <form id="logout" action="/logout" method="POST" class="bg-tr"></form>
+                                    <li class="ml-6 cursor-pointer"><a
+                                            onclick="document.getElementById('logout').submit()">Logout</a>
+                                    </li>
+
+                                    <% } else{ %>
+                                        <li class="ml-6"><a href="/register">Register</a></li>
+                                        <li class="ml-6"><a href="/login">Login</a></li>
+                                        <% } %>
+                                            <li class="ml-6"><a href="/cart"
+                                                    class="add-to-cart inline-block rounded-full px-4 py-2 flex items-center ">
+                                                    <span id="cartCounter" class="text-white font-bold pr-2">
+                                                        <%= session.cart? session.cart.totalQty : "" %>
+                                                    </span>
+                                                    <img src="/img/cart.png" alt="cart"></a></li>
+                </ul>
+            </div>
+        </nav>
+    </div>
+
+    <div class="body-root">
+        <div class="px-10 py-20">
+            <%- body %>
+        </div>
+    </div>
+
+
+    <!-- Footer -->
+
+    <div class="footer px-8 my-5">
+        <!-- navbar -->
+        <nav class="container mx-auto grid grid-cols-1 lg:grid-cols-3 justify-items-center justify-around py-10">
+            <div class="py-5 lg:py-1">
+                <span><em>© Created with 💖 by</em> Abhishek Kumar</span>
+            </div>
+
+            <div class="py-5 lg:py-1">
+                <ul class="flex flex-col justify-center gap-y-1">
+                    <li>
+                        <h3><b>Useful Links</b></h3>
                     </li>
-
-                    <% } else{ %>
-                        <li class="ml-6"><a href="/register">Register</a></li>
-                        <li class="ml-6"><a href="/login">Login</a></li>
-                        <% } %>
-                            <li class="ml-6"><a href="/cart"
-                                    class="add-to-cart inline-block rounded-full px-4 py-2 flex items-center ">
-                                    <span id="cartCounter" class="text-white font-bold pr-2">
-                                        <%= session.cart? session.cart.totalQty : "" %>
-                                    </span>
-                                    <img src="/img/cart.png" alt="cart"></a></li>
-            </ul>
-        </div>
-    </nav>
+                    <li><a href="/"><em>Menu</em></a></li>
+                    <% if (user) { %>
+                        <% if (user.role==='admin' ) { %>
+                            <li><a href="/admin/orders"><em>Orders received🔑</em></a></li>
+                            <li><a href="/admin/orders"><em></em></a></li>
+                            <% }else{ %>
+                                <li><a href="/customer/orders"><em>Your Orders</em></a></li>
+                                <li><a href="/customer/orders"><em></em></a></li>
+                                <% } %>
 
 
-    <%- body %>
+                                    <% } else{ %>
+                                        <li><a href="/register"><em>Register</em></a></li>
+                                        <li><a href="/login"><em>Login</em></a></li>
+                                        <li><a href="/login"></a></li>
+                                        <% } %>
 
+                </ul>
+            </div>
 
-        <script src="/socket.io/socket.io.js"></script>
-        <script src="/js/app.js"></script>
+            <div class="py-5 lg:py-1">
+                <div class="flex flex-row">
+
+                    <a class="px-2" href="https://www.linkedin.com/in/abhishek-00-/" target="_blank">
+                        <img class="w-8"
+                            src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linkedin/linkedin-plain.svg"
+                            alt="Linkedin">
+                    </a>
+                    <a class="px-2" href="https://twitter.com/Abhishek_ak_02">
+                        <img class="w-8"
+                            src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/twitter/twitter-original.svg"
+                            alt="Twitter">
+                    </a>
+                    <a class="px-2" href="https://github.com/Abhishek-00" target="_blank">
+                        <img class="w-8"
+                            src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg"
+                            alt="GitHub">
+                    </a>
+                    <a class="px-2" href="mailto: abhishek02102003@gmai.com">
+                        <img class="w-8" src="https://cdn-icons-png.flaticon.com/512/324/324123.png" alt="GitHub">
+                    </a>
+                </div>
+            </div>
+
+        </nav>
+    </div>
+
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="/js/app.js"></script>
 </body>
 
 </html>

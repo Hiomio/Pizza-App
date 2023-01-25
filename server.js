@@ -14,6 +14,7 @@ const Emitter = require('events')
 
 
 // database connection
+
 mongoose.set('strictQuery', false);
 mongoose.connect(process.env.MONGO_CONNECT_URL, {
     useNewUrlParser: true,
@@ -57,7 +58,7 @@ app.use(session({
         // mongoUrl:'mongodb://localhost/pizza'
     }),
     saveUninitialized: false,
-    cookie: { maxAge: 1000 * 60 * 60 * 24 } /* 24 hours */
+    cookie: {   maxAge: 1000 * 60 * 60 * 24 } /* 24 hours */
 }))
 
 
@@ -110,7 +111,7 @@ const server = app.listen(PORT, () => {
 const io = require('socket.io')(server)
 io.on('connection', (socket) => {
     socket.on('join', (roomId) => {
-        console.log(roomId)
+        console.log('rooooom idddddddddddddddd',roomId)
         socket.join(roomId)
     })
 })

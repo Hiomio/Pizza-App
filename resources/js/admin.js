@@ -48,7 +48,7 @@ export function initAdmin(socket) {
                     <div>${renderItems(order.items)}</div>
                 </td>
                 <td class="border px-4 py-2">${order.customerId.name}</td>
-                <td class="border px-4 py-2">${order.customerId.phone}</td>
+                <td class="border px-4 py-2">${order.phone}</td>
                 <td class="border px-4 py-2">${order.address}</td>
                 <td class="border px-4 py-2">
                     <div class="inline-block relative w-64">
@@ -107,8 +107,7 @@ export function initAdmin(socket) {
         orders.unshift(order)
         orderTableBody.innerHTML = ''
         orderTableBody.innerHTML = generateMarkup(orders)
-
-        socket.join()
+        
     })
 
 

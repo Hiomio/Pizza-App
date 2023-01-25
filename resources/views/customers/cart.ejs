@@ -44,11 +44,30 @@
                                 </div>
 
                                 <div>
-                                    <form action="/orders" method="POST" class="mt-12">
-                                        <input class="border border-gray-400 p-2 w-1/2 mb-4" type="text"
+                                    <form action="/orders" method="POST" class="mt-12" id="payment-form">
+
+                                        <!-- select box -->
+                                        <div class="relative w-3/4 ml-auto mb-4">
+                                            <label for="countries"
+                                                class="block mb-2 text-sm font-medium text-orange-600">Select payment
+                                                method</label>
+                                            <select id="paymentType" name="paymentType"
+                                                class="bg-white border border-orange-300 text-gray-900 text-sm rounded-sm focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5  dark:border-gray-600 dark:placeholder-gray-400 dark:focus:border-orange-900">
+                                                <option value="COD">Cash on delivery</option>
+                                                <option value="card">Pay with card</option>
+                                            </select>
+                                        </div>
+
+                                        <input class="border border-gray-400 p-2 w-3/4 mb-4" type="text"
                                             placeholder="Phone" name="phone">
-                                        <input class="border border-gray-400 p-2 w-1/2" type="text"
+                                        <input class="border border-gray-400 p-2 w-3/4 mb-4" type="text"
                                             placeholder="Address" name="address">
+
+                                        <div class="relative w-3/4 ml-auto mb-4">
+                                            <div id="card-element">
+
+                                            </div>
+                                        </div>
 
                                         <div>
                                             <button
