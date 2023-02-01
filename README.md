@@ -27,3 +27,5 @@ NodeJs, ExpressJs, MongoDB, Socket.io, EJS, Tailwindcss, Sass, Laravel-mix, Pasp
 
 <br />
 
+### Video 
+https://www.linkedin.com/posts/abhishek-00-_webdevelopment-development-fullstackdevelopment-activity-7024395050033790977-m4zf?utm_source=share&utm_medium=member_desktop
