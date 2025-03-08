@@ -1,79 +1,68 @@
-<section class="register login w-full container flex items-center m-auto">
-
-    <div class="container flex xl:justify-center lg:justify-center justify-center items-center flex-wrap h-full g-6">
-        <div class="auth w-full xl:ml-20 xl:w-5/12 lg:w-5/12 md:w-8/12 mb-12 md:mb-0 h-full">
-
-            
-            
-            <form action="/register" method="POST">
-                        <%if (messages.error ) { %>
-                            <span class="text-red-500 text-sm">
-                                <%= messages.error %>
-                            </span>
-                            <% } %>
-
-
-                        <!-- Name input -->
-                        <div class="mb-6">
-                            <label class="block text-gray-700 text-sm font-bold mb-2" for="name">Name</label>
-                            <input type="text" value="<%= messages.name %>"
-                                class="form-control block w-full px-4 py-2 text-xl font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded m-0 focus:text-gray-700 focus:bg-white  focus:outline-none"
-                                id="exampleFormControlInput2" id="exampleFormControlInput2"
-                                placeholder="Enter your fullname" name="name" />
-                        </div>
-
-                        <!-- Email input -->
-                        <div class="mb-6">
-                            <label class="block text-gray-700 text-sm font-bold mb-2" for="name">Email</label>
-                            <input id="1" type="text" value="<%= messages.email %>"
-                                class="form-control block w-full px-4 py-2 text-xl font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded m-0 focus:text-gray-700 focus:bg-white  focus:outline-none"
-                                id="exampleFormControlInput2" id="exampleFormControlInput2"
-                                placeholder="Enter your email " name="email" />
-                        </div>
-
-
-                        <!-- phone input -->
-                        <div class="mb-6">
-                            <label class="block text-gray-700 text-sm font-bold mb-2" for="name">Phone</label>
-                            <input id="2" type="text" value="<%= messages.phone %>"
-                                class="form-control block w-full px-4 py-2 text-xl font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded m-0 focus:text-gray-700 focus:bg-white  focus:outline-none"
-                                id="exampleFormControlInput2" id="exampleFormControlInput2" placeholder="Phone "
-                                name="phone" />
-                        </div>
-
-                        <!-- Password input -->
-                        <div class="mb-6">
-                            <label class="block text-gray-700 text-sm font-bold mb-2" for="password">Password</label>
-                            <input id="3" type="password"
-                                class="form-control block w-full px-4 py-2 text-xl font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded m-0 focus:text-gray-700 focus:bg-white  focus:outline-none"
-                                id="exampleFormControlInput2" placeholder="Password" name="password" />
-                        </div>
-
-
-                        <!-- CPassword input -->
-                        <div class="mb-6">
-                            <label class="block text-gray-700 text-sm font-bold mb-2" for="password">Confirm
-                                password</label>
-                            <input id="4" type="password"
-                                class="form-control block w-full px-4 py-2 text-xl font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded m-0 focus:text-gray-700 focus:bg-white  focus:outline-none"
-                                id="exampleFormControlInput2" placeholder="Confirm password" name="confirmPassword" />
-                        </div>
-
-
-                        <div class="text-center lg:text-left">
-                            <button id="5"  type="submit"
-                                class="inline-block px-7 py-3  rounded-full text-white font-bold uppercase shadow-md hover:shadow-lg focus:shadow-lg focus:outline-none focus:ring-0 btn-primary">
-                                Register
-                            </button>
-                            <p class="text-sm font-semibold mt-2 pt-1 mb-0">
-                                Already have an account?
-                                <a href="/login">Login</a>
-                            </p>
-                        </div>
-
-
-                    </form>
-        </div>
-    </div>
-
+<section class="login flex justify-center pt-24  mt-[5.5rem]">
+  <div class="w-full max-w-xs">
+    <form
+      action="/register"
+      method="POST"
+      class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4"
+    >
+    <% if(messages.error) { %>
+      <h6 class="text-red-500 text-sm text-center"><%= messages.error %></h6>
+      <% } %>
+      <div class="mb-4">
+        <label for="name" class="block text-gray-700 text-sm font-bold mb-2">
+          Name
+        </label>
+        <input
+          name="name"
+          value="<%= messages.name%>"
+          type="text"
+          class="shadow appearence-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+          id="name"
+          placeholder="Enter your name"
+        />
+      </div>
+      <div class="mb-4">
+        <label for="email" class="block text-gray-700 text-sm font-bold mb-2">
+          Email
+        </label>
+        <input
+          name="email"
+          value="<%= messages.email%>"
+          type="text"
+          class="shadow appearence-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+          id="email"
+          placeholder="Enter your email"
+        />
+      </div>
+      <div class="mb-6">
+        <label
+          for="password"
+          class="block text-gray-700 text-sm font-bold mb-2"
+        >
+          Password
+        </label>
+        <input
+          name="password"
+          type="password"
+          class="shadow appearence-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+          id="password"
+          placeholder="**************"
+        />
+      </div>
+      <div class="flex items-center justify-between">
+        <button
+          type="submit"
+          class="btn-primary rounded-full text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+        >
+          Register
+        </button>
+        <a href="/login" class="inline-block align-baseline font-bold text-sm"
+          >Already have account?</a
+        >
+      </div>
+    </form>
+    <p class="text-center text-gray-500 text-xs">
+      &copy; 2024 Abhijeet kumar. All rights reserved
+    </p>
+  </div>
 </section>

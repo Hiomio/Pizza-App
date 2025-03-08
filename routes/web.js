@@ -1,40 +1,37 @@
-const homeController = require('../app/http/controllers/homeController')
-const authController = require('../app/http/controllers/authController')
-const cartController = require('../app/http/controllers/customers/cartController')
-const orderController = require('../app/http/controllers/customers/orderController')
-const guest = require('../app/http/middleware/guest')
-const auth = require('../app/http/middleware/auth')
-const adminOrderController = require('../app/http/controllers/admin/orderController')
-const admin = require('../app/http/middleware/admin')
-const statusController = require('../app/http/controllers/admin/statusController')
+import homeControllers from "../app/http/controllers/homeControllers.js";
+import authControllers from "../app/http/controllers/authControllers.js";
+import cartControllers from "../app/http/controllers/customers/cartControllers.js";
+import orderControllers from "../app/http/controllers/customers/orderController.js";
+import AdminOrderControllers from "../app/http/controllers/admin/orderControllers.js";
+import statusControllers from "../app/http/controllers/admin/statusControllers.js";
 
 
-function initRoutes(app) {
+import guest from '../app/http/middlewares/guest.js'
+import auth from '../app/http/middlewares/auth.js'
+import admin from '../app/http/middlewares/admin.js'
 
-    app.get("/", homeController().index)
+const initRoutes = (app) => {
+  //default route
+  app.get("/", homeControllers().index);
 
-    app.get("/login", guest, authController().login)
-    app.post('/login', authController().postLogin)
+  //auth routes
+  app.get("/login", guest, authControllers().login);
+  app.post("/login", authControllers().postlogin);
+  app.get("/register", guest, authControllers().register);
+  app.post('/register', authControllers().postregister);
+  app.post('/logout', authControllers().logout)
 
-    app.get("/register", guest, authController().register)
-    app.post("/register", authController().postRegister)
+  app.get("/cart", cartControllers().index);
+  app.post('/update-carts', cartControllers().update);
 
-    app.post("/logout", authController().logout)
-
-    app.get("/cart", cartController().index)
-    app.post('/update-cart', cartController().update)
-
-    // customer routes
-    app.post("/orders", auth, orderController().store)
-    app.get('/customer/orders', auth, orderController().index)
-    app.get('/customer/orders/:id', auth, orderController().show)
-
-    // Adimin routes
-    app.get('/admin/orders', admin, adminOrderController().index)
-    app.post('/admin/order/status', admin, statusController().update)
-
-    
+  //Customer routes
+  app.post("/orders", auth, orderControllers().store);
+  app.get('/customers/orders', auth, orderControllers().index)
+  app.get('/customers/orders/:id', auth, orderControllers().show)
+  
+  //Admin routes
+  app.get('/admin/orders', admin, AdminOrderControllers().index)
+  app.post('/admin/order/status', admin, statusControllers().update)
 }
 
-
-module.exports = initRoutes
+export default initRoutes;
